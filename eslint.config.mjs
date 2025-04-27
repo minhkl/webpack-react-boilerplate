@@ -6,30 +6,30 @@ import { defineConfig } from "eslint/config";
 import eslintConfigPrettier from "eslint-config-prettier/flat";
 
 export default defineConfig([
-    {
-        files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"],
-        plugins: { js },
-        extends: ["js/recommended"],
+  {
+    files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"],
+    plugins: { js },
+    extends: ["js/recommended"],
+  },
+  {
+    files: ["./src/**/*.{js,mjs,cjs,ts,jsx,tsx}"],
+    languageOptions: { globals: globals.browser },
+  },
+  tseslint.configs.recommended,
+  pluginReact.configs.flat.recommended,
+  {
+    settings: {
+      react: {
+        version: "detect",
+      },
     },
-    {
-        files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"],
-        languageOptions: { globals: globals.browser },
+  },
+  {
+    rules: {
+      "react/react-in-jsx-scope": "off",
+      "@typescript-eslint/no-explicit-any": "warn",
+      "@typescript-eslint/no-unused-vars": "warn",
     },
-    tseslint.configs.recommended,
-    pluginReact.configs.flat.recommended,
-    {
-        settings: {
-            react: {
-                version: "detect",
-            },
-        },
-    },
-    {
-        rules: {
-            "react/react-in-jsx-scope": "off",
-            "@typescript-eslint/no-explicit-any": "warn",
-            "@typescript-eslint/no-unused-vars": "warn",
-        },
-    },
-    eslintConfigPrettier,
+  },
+  eslintConfigPrettier,
 ]);
