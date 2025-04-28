@@ -3,6 +3,7 @@ import HtmlWebpackPlugin from "html-webpack-plugin";
 import { CleanWebpackPlugin } from "clean-webpack-plugin";
 import TsconfigPathsPlugin from "tsconfig-paths-webpack-plugin";
 import { fileURLToPath } from "url";
+import DotenvWebpackPlugin from "dotenv-webpack";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -52,6 +53,9 @@ export default {
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: "./public/index.html",
+    }),
+    new DotenvWebpackPlugin({
+      path: "./.env",
     }),
   ],
   devServer: {
